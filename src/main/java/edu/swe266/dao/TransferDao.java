@@ -1,7 +1,7 @@
 package edu.swe266.dao;
 
 
-public interface TransferDaoService {
+public interface TransferDao {
     /**
      *
      * @param account user's account

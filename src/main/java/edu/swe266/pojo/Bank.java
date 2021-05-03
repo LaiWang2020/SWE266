@@ -1,5 +1,8 @@
-package edu.swe266.Object;
+package edu.swe266.pojo;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Bank {
     private String bankName;
     private int bankBalance;

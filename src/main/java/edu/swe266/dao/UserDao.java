@@ -1,6 +1,6 @@
 package edu.swe266.dao;
 
-public interface UserDaoSevice {
+public interface UserDao {
      /**
       *
       * @param account user's account

@@ -1,5 +1,8 @@
-package edu.swe266.Object;
+package edu.swe266.pojo;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Account {
     private int accid;
     private int balance;
