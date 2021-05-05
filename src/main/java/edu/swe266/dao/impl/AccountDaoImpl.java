@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.sql.Statement;
+import java.util.List;
 
 @Component("AccountDao")
 public class AccountDaoImpl implements AccountDao {
@@ -21,6 +22,7 @@ public class AccountDaoImpl implements AccountDao {
         Account account=jdbcTemplate.queryForObject("Select deposit from account where username=?", new BeanPropertyRowMapper<Account>(Account.class), "duke");
         System.out.println("invoke success");
         return account.getDeposit();*/
+
         /*Bad Code start*/
         Account account=jdbcTemplate.queryForObject("Select deposit from account where username='"+user+"'", new BeanPropertyRowMapper<Account>(Account.class));
         System.out.println("invoke success");
@@ -32,15 +34,22 @@ public class AccountDaoImpl implements AccountDao {
 
     @Override
     public void deposit(String user, double money) {
-//        String sql="update account set money=";
-//        jdbcTemplate.update(sql);
-
+         Account account=jdbcTemplate.queryForObject("Select deposit from account where username=?", new BeanPropertyRowMapper<Account>(Account.class), user);
+         double deposit= account.getDeposit();
+        jdbcTemplate.update("update account set deposit=? where username=?", money+deposit, user);
+        //bad code
+        System.out.println("Deposit "+money+"successful");
     }
 
 
     @Override
+    //should add check part
     public void withDraw(String user, double money) {
-        jdbcTemplate.update("update account set money=money+? where name=?",money,user);
+        Account account=jdbcTemplate.queryForObject("Select deposit from account where username=?", new BeanPropertyRowMapper<Account>(Account.class), user);
+        double deposit= account.getDeposit();
+        jdbcTemplate.update("update account set deposit=? where username=?", deposit-money, user);
+        //bad code
+        System.out.println("Withdraw "+money+"successful");
     }
 
     @Override
