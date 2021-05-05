@@ -9,6 +9,7 @@ public class User {
     private String name;
     private String address;
     private String DOB;
+    private String uuid;
 
     public void setName(String name) {
         this.name = name;
