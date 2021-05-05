@@ -1,4 +1,4 @@
-package edu.swe266.dao;
+package edu.swe266.dao.impl;
 
 import org.junit.Test;
 

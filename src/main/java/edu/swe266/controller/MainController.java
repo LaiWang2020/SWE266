@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/cart/")
+@RequestMapping("/home/")
 public class MainController {
 
 }

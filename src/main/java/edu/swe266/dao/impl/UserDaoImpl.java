@@ -1,20 +1,25 @@
-package edu.swe266.dao;
+package edu.swe266.dao.impl;
 
+import edu.swe266.dao.UserDao;
 import edu.swe266.pojo.Account;
 import edu.swe266.pojo.Bank;
 import edu.swe266.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 
 @Repository("userDao")
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
     @Autowired
     Account account;
     @Autowired
     Bank bank;
     @Autowired
     User user;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public int checkBalance(int account) {
