@@ -1,34 +1,46 @@
 package edu.swe266.pojo;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class Account {
-    private int accid;
-    private int balance;
-    private int psw;
+    private String accid;
+    private String username;
+    private String psw;
+    private int deposit;
 
-    public void setAccid(int accid) {
+    public void setAccid(String accid) {
         this.accid = accid;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
 
-    public int getAccid() {
+
+    public String getAccid() {
         return accid;
     }
 
-    public int getBalance() {
-        return balance;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setPsw(int psw) {
+    public String getUsername() {
+        return username;
+    }
+
+    public void setDeposit(int deposit) {
+        this.deposit = deposit;
+    }
+
+    public int getDeposit() {
+        return deposit;
+    }
+
+    public void setPsw(String psw) {
         this.psw = psw;
     }
 
-    public int getPsw() {
+    public String getPsw() {
         return psw;
     }
 }
