@@ -36,6 +36,7 @@
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-servlet-api</artifactId>
       <version>7.0.64</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>

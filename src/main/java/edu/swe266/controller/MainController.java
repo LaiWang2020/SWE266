@@ -7,7 +7,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/home/")
 public class MainController {
+
+    @RequestMapping("/")
+    public String main() { return "login"; }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping("/signUp")
+    public String signUp() {
+        return "signUp";
+    }
+
+    @RequestMapping("/forgot")
+    public String forgot() { return "forgot"; }
+
 
 }
