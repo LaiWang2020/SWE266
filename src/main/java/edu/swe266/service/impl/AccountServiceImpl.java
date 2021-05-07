@@ -14,34 +14,34 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public void withdrawMoney(String user, double money) {
-        accountDao.withDraw(user,money);
+    public void withdrawMoney(String username, double money) {
+        accountDao.withDraw(username,money);
     }
 
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public void depositMoney(String user, double money) {
-        accountDao.deposit(user, money);
+    public void depositMoney(String username, double money) {
+        accountDao.deposit(username, money);
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public double checkDeposit(String user) {
-        return accountDao.checkDeposit(user);
+    public double checkDeposit(String username) {
+        return accountDao.checkDeposit(username);
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public void createAccount(String user, String psw) {
-        accountDao.createAccount(user,psw);
+    public void createAccount(String username,String psw) {
+        accountDao.createAccount(username,psw);
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public boolean logIn(String user, String psw) {
-        return accountDao.logIn(user, psw);
+    public boolean logIn(String username, String psw) {
+        return accountDao.logIn(username, psw);
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public boolean userExist(String user) {
-        return accountDao.userExist(user);
+    public boolean userExist(String username) {
+        return accountDao.userExist(username);
     }
 
 }

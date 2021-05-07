@@ -10,12 +10,38 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.beans.PropertyVetoException;
 
 public class Test {
-    public static void main(String[] args) {
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
-        AccountService account = applicationContext.getBean(AccountService.class);
+    ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+    AccountService account = applicationContext.getBean(AccountService.class);
+    @org.junit.Test
+    public void testDeposit(){
+
         System.out.println(account.checkDeposit("duke"));
+        account.depositMoney("duke", 1000);
+    }
+    @org.junit.Test
+    public void testUserExist(){
+
+        System.out.println(account.userExist("duke2"));
         //account.depositMoney("duke", 1000);
-        account.withdrawMoney("duke", 123);
+        //account.withdrawMoney("duke", 123);
+    }
+    @org.junit.Test
+    public void testCreateAccount(){
+            account.createAccount("123456","duke3");
+
+    }
+    @org.junit.Test
+    public void testLogin(){
+        //normal login
+        account.logIn("duke3", "123456");
+        //sql injection login
+        account.logIn("duke3' or '1 --","");
+
+    }
+    @org.junit.Test
+    public void testWithdraw(){
+        account.withdrawMoney("duke3",1000);
+
     }
 
 //    @org.junit.Test
