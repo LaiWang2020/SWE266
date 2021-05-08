@@ -6,14 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 
 @Controller
 public class MainController {
 
+    //private static final Logger logger = LogManager.getLogger(MainController.class);
     @Autowired
     AccountService accountService;
 
@@ -21,7 +25,10 @@ public class MainController {
     public String main() { return "login"; }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String login(String username, String password, HttpSession session) {
+    @ResponseBody
+    public String login(
+            @RequestParam(value = "username", required = true) String username,
+            @RequestParam(value = "password", required = true) String password, HttpSession session) {
         boolean isSuccess = accountService.logIn(username,password);
         //这里如果不判断，直接加入到session里面其实是可以当成一个问题的，就是那个cwe trust boundary
         if(isSuccess){
@@ -38,7 +45,9 @@ public class MainController {
     }
 
     @RequestMapping(value = "/signUp",method = RequestMethod.POST)
-    public String signUp(String username, String password, HttpSession session) {
+    public String signUp(
+            @RequestParam(value = "username", required = true) String username,
+            @RequestParam(value = "password", required = true) String password, HttpSession session) {
         boolean isSuccess = accountService.createAccount(username,password);
         //这里如果不判断，直接加入到session里面其实是可以当成一个问题的，就是那个cwe trust boundary
         if(isSuccess){
@@ -52,7 +61,8 @@ public class MainController {
     public String forgot() { return "forgot"; }
 
     @RequestMapping(value = "/deposit",method = RequestMethod.POST)
-    public String deposit(double amount,HttpSession session) {
+    public String deposit(
+            @RequestParam(value = "amount", required = true) double amount,HttpSession session) {
         String username = (String) session.getAttribute(Const.CURRENT_USER);
         boolean isSuccess = accountService.depositMoney(username,amount);
         if(isSuccess){
@@ -62,7 +72,8 @@ public class MainController {
     }
 
     @RequestMapping(value = "/withdraw",method = RequestMethod.POST)
-    public String withdraw(double amount,HttpSession session) {
+    public String withdraw(
+            @RequestParam(value = "amount", required = true) double amount,HttpSession session) {
         String username = (String) session.getAttribute(Const.CURRENT_USER);
         boolean isSuccess = accountService.withdrawMoney(username,amount);
         if(isSuccess){

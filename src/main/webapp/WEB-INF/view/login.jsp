@@ -27,7 +27,7 @@
                 <div class="card fat">
                     <div class="card-body">
                         <h4 class="card-title">Login</h4>
-                        <form modelAttribute="login" method="POST" class="my-login-validation" novalidate="" >
+                        <form action="login" method="POST" class="my-login-validation" novalidate="" >
                             <div class="form-group">
                                 <label for="username">
                                     Username
