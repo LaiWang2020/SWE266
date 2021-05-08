@@ -1,7 +1,6 @@
 package edu.swe266.controller;
 
 import edu.swe266.service.AccountService;
-import edu.swe266.service.IMainService;
 import edu.swe266.util.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,11 +1,13 @@
-package edu.swe266.service;
+package edu.swe266.test;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import edu.swe266.pojo.Account;
+import edu.swe266.service.AccountService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 
 import java.beans.PropertyVetoException;
 
@@ -15,8 +17,8 @@ public class Test {
     @org.junit.Test
     public void testDeposit(){
 
-        System.out.println(account.checkDeposit("duke"));
-        account.depositMoney("duke", 1000);
+        System.out.println(account.checkDeposit(null));
+        //System.out.println(account.depositMoney("duke", 1000));
     }
     @org.junit.Test
     public void testUserExist(){
@@ -27,7 +29,7 @@ public class Test {
     }
     @org.junit.Test
     public void testCreateAccount(){
-            account.createAccount("123456","duke3");
+        System.out.println(account.createAccount("duke4","123456"));
 
     }
     @org.junit.Test
@@ -40,7 +42,7 @@ public class Test {
     }
     @org.junit.Test
     public void testWithdraw(){
-        account.withdrawMoney("duke3",1000);
+        System.out.println(account.withdrawMoney("duke3",250));
 
     }
 

@@ -14,14 +14,14 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public void withdrawMoney(String username, double money) {
-        accountDao.withDraw(username,money);
+    public boolean withdrawMoney(String username, double money) {
+        return accountDao.withDraw(username,money);
     }
 
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public void depositMoney(String username, double money) {
-        accountDao.deposit(username, money);
+    public boolean depositMoney(String username, double money) {
+        return accountDao.deposit(username, money);
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
@@ -30,8 +30,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public void createAccount(String username,String psw) {
-        accountDao.createAccount(username,psw);
+    public boolean createAccount(String username,String psw) {
+        return accountDao.createAccount(username,psw);
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
