@@ -71,5 +71,12 @@ public class MainController {
         return Const.FAILURE;
     }
 
+    @RequestMapping(value = "/check",method = RequestMethod.POST)
+    public double checkDeposit(HttpSession session) {
+        String username = (String) session.getAttribute(Const.CURRENT_USER);
+        double deposit = accountService.checkDeposit(username);
+        return deposit;
+    }
+
 
 }
