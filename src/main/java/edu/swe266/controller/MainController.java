@@ -28,14 +28,14 @@ public class MainController {
         if(isSuccess){
             session.setAttribute(Const.CURRENT_USER,username);
         }
-        return " success login";
+        return Const.SUCCESS;
     }
 
     @RequestMapping(value = "logout",method = RequestMethod.POST)
     @ResponseBody
     public String logout(HttpSession session){
         session.removeAttribute(Const.CURRENT_USER);
-        return "success";
+        return Const.SUCCESS;
     }
 
     @RequestMapping(value = "/signUp",method = RequestMethod.POST)
@@ -45,11 +45,23 @@ public class MainController {
 //        if(isSuccess){
 //            session.setAttribute(Const.CURRENT_USER,username);
 //        }
-        return "signUp";
+        return Const.SUCCESS;
     }
 
-    @RequestMapping("/forgot")
+    @RequestMapping(value = "/forgot")
     public String forgot() { return "forgot"; }
+
+    @RequestMapping(value = "/deposit",method = RequestMethod.POST)
+    public String deposit(String username,double amount) {
+        accountService.depositMoney(username,amount);
+        return Const.SUCCESS;
+    }
+
+    @RequestMapping(value = "/withdraw",method = RequestMethod.POST)
+    public String withdraw(String username,double amount) {
+        accountService.withdrawMoney(username,amount);
+        return Const.SUCCESS;
+    }
 
 
 }
