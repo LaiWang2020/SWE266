@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="Kodinger">
+    <meta name="author" content="Rocky">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,20 +22,13 @@
                 <div class="card fat">
                     <div class="card-body">
                         <h4 class="card-title">Register</h4>
-                        <form method="POST" class="my-login-validation" novalidate="">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input id="name" type="text" class="form-control" name="name" required autofocus>
-                                <div class="invalid-feedback">
-                                    What's your name?
-                                </div>
-                            </div>
+                        <form modelAttribute="signup" method="POST" class="my-login-validation" novalidate="">
 
                             <div class="form-group">
-                                <label for="email">E-Mail Address</label>
-                                <input id="email" type="email" class="form-control" name="email" required>
+                                <label for="username">username</label>
+                                <input id="username" type="text" class="form-control" name="username" required>
                                 <div class="invalid-feedback">
-                                    Your email is invalid
+                                    username is required
                                 </div>
                             </div>
 
@@ -69,7 +62,7 @@
                     </div>
                 </div>
                 <div class="footer">
-                    Copyright &copy; 2017 &mdash; Your Company
+                    Copyright &copy; 2017 &mdash; Sun Coorperation
                 </div>
             </div>
         </div>

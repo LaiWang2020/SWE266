@@ -1,6 +1,11 @@
+DROP DATABASE IF EXISTS bank;
+create DATABASE bank;
+USE bank;
+
 CREATE TABLE account (
-    id UNIQUE BIGINT(20),
-    username UNIQUE varchar(255),
-    password varchar(255),
+    id int NOT NULL UNIQUE ,
+    username varchar(255) NOT NULL UNIQUE,
+    password varchar(255) NOT NULL ,
     money int
 );
+

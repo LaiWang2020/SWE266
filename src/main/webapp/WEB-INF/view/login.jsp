@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="Kodinger">
+    <meta name="author" content="Rocky">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>My Login Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,7 +18,6 @@
                     <img src="resources/img/logo.jpg" alt="logo">
 
                 </div>
-
                 <div class="title">
                     <h2 class="card-title text-center">CHEESE BANK</h2>
                 </div>
@@ -28,12 +27,15 @@
                 <div class="card fat">
                     <div class="card-body">
                         <h4 class="card-title">Login</h4>
-                        <form method="POST" class="my-login-validation" novalidate="">
+                        <form modelAttribute="login" method="POST" class="my-login-validation" novalidate="" >
                             <div class="form-group">
-                                <label for="email">E-Mail Address</label>
-                                <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+                                <label for="username">
+                                    Username
+                                </label>
+                                <input id="username" path="username" type="text" class="form-control" name="username" value="" required autofocus>
+
                                 <div class="invalid-feedback">
-                                    Email is invalid
+                                    username is invalid
                                 </div>
                             </div>
 
@@ -43,7 +45,7 @@
                                         Forgot Password?
                                     </a>
                                 </label>
-                                <input id="password" type="password" class="form-control" name="password" required data-eye>
+                                <input id="password" path="password" type="password" class="form-control" name="password" required data-eye>
                                 <div class="invalid-feedback">
                                     Password is required
                                 </div>
