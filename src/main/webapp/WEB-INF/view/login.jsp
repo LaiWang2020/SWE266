@@ -32,7 +32,7 @@
                                 <label for="username">
                                     Username
                                 </label>
-                                <input id="username" type="text" class="form-control" name="username" value="" required autofocus>
+                                <input id="username" type="text" class="form-control" name="username" value="" required="required" autofocus>
 
 
                             </div>
@@ -43,7 +43,7 @@
                                         Forgot Password?
                                     </a>
                                 </label>
-                                <input id="password" type="password" class="form-control" name="password" required data-eye>
+                                <input id="password" type="password" class="form-control" name="password" required="required" data-eye>
                                 <div class="invalid-feedback d-block">
                                     ${password_error}
                                 </div>
