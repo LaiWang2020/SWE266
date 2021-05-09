@@ -22,7 +22,7 @@
                 <div class="card fat">
                     <div class="card-body">
                         <h4 class="card-title">Register</h4>
-                        <form modelAttribute="signup" method="POST" class="my-login-validation" novalidate="">
+                        <form action="signUp" method="POST" class="my-login-validation" novalidate="">
 
                             <div class="form-group">
                                 <label for="username">username</label>

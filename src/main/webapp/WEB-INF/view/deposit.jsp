@@ -24,11 +24,11 @@
           <div class="card-body">
             <h3 class="card-title ">Welcome ${user}</h3>
 
-            <form action="deposit" method="POST" class="my-login-validation" novalidate="" name="deposit">
+            <form action="save" method="POST" class="my-login-validation" novalidate="">
               <h6> Deposit Money</h6>
               <div class="form-group">
-                <label for="deposit"></label>
-                <input id="deposit" type="text" class="form-control" name="deposit" value="" required autofocus>
+                <label for="save"></label>
+                <input id="save" type="text" class="form-control" name="save" value="" required autofocus>
                 <div class="invalid-feedback">
                   Input is invalid
                 </div>
@@ -44,7 +44,7 @@
               </div>
             </form>
             <hr/>
-            <form action="withdraw" method="POST" class="my-login-validation" novalidate="" name="withdraw">
+            <form action="withdraw" method="POST" class="my-login-validation" novalidate="">
               <h6> Withdraw Money</h6>
               <div class="form-group">
                 <label for="withdraw"></label>
@@ -68,11 +68,11 @@
             <hr/>
             <div class="form-group m-0">
 
-              <a href ="logout">
+              <form action="logout" method="get">
                 <button class="btn btn-danger btn-block" >
                   Logout
                 </button>
-              </a>
+              </form>
             </div>
           </div>
         </div>
