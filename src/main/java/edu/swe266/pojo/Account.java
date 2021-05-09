@@ -28,7 +28,7 @@ public class Account {
         return username;
     }
 
-    public void setDeposit(int deposit) {
+    public void setDeposit(double deposit) {
         this.deposit = deposit;
     }
 

@@ -18,7 +18,7 @@ public class Test {
     @org.junit.Test
     public void testDeposit(){
 
-        System.out.println(account.checkDeposit(null));
+        System.out.println(account.checkDeposit("duke"));
         //System.out.println(account.depositMoney("duke", 1000));
     }
     @org.junit.Test
@@ -30,7 +30,7 @@ public class Test {
     }
     @org.junit.Test
     public void testCreateAccount(){
-        System.out.println(account.createAccount("duke4","123456"));
+        System.out.println(account.createAccount("duke5","123456"));
 
     }
     @org.junit.Test
