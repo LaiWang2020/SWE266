@@ -27,24 +27,23 @@ public class MainController {
     @RequestMapping({"/"})
     public String main() { return "login"; }
 
-    @RequestMapping(value = "/signUp")
-    public String signUpGet(){
-        return "signUp";
-    }
-
-    @RequestMapping(value = "/forgot")
-    public String forgotGet() { return "forgot"; }
-
-    @RequestMapping(value = "/deposit")
-    public String depositGet() { return "deposit"; }
-
-    @RequestMapping(value = "/logout")
-    public String withdrawGet() { return "logout"; }
+//    @RequestMapping(value = "/signUp")
+//    public String signUpGet(){
+//        return "signUp";
+//    }
+//
+//    @RequestMapping(value = "/forgot")
+//    public String forgotGet() { return "forgot"; }
+//
+//    @RequestMapping(value = "/deposit")
+//    public String depositGet() { return "deposit"; }
+//
+//    @RequestMapping(value = "/logout")
+//    public String withdrawGet() { return "logout"; }
 
 
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-//    @ResponseBody
     public String loginPost(
             @RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password,
@@ -54,20 +53,17 @@ public class MainController {
         //这里如果不判断，直接加入到session里面其实是可以当成一个问题的，就是那个cwe trust boundary
         if(isSuccess){
             session.setAttribute(Const.CURRENT_USER,username);
-
-            return "signUp";
+            return "deposit";
         }
         model.addAttribute("password_error","username or password does not match");
         return "redirect:/";
     }
 
-    @RequestMapping(value = "logout",method = RequestMethod.POST)
+    @RequestMapping(value = "/logout",method = RequestMethod.POST)
     public String logout(HttpSession session){
         session.removeAttribute(Const.CURRENT_USER);
-        return Const.SUCCESS;
+        return "login";
     }
-
-
 
     @RequestMapping(value = "/signUp",method = RequestMethod.POST)
     public String signUpPost(
@@ -83,34 +79,32 @@ public class MainController {
     }
 
 
-
     @RequestMapping(value = "/deposit",method = RequestMethod.POST)
     public String deposit(
-            @RequestParam(value = "amount", required = true) double amount,HttpSession session) {
+            @RequestParam(value = "deposit", required = true) String amount,
+            HttpSession session,Model model) {
         String username = (String) session.getAttribute(Const.CURRENT_USER);
-        boolean isSuccess = accountService.depositMoney(username,amount);
+        boolean isSuccess = accountService.depositMoney(username,Double.parseDouble(amount));
         if(isSuccess){
-            return Const.SUCCESS;
+            double balance = accountService.checkDeposit(username);
+            model.addAttribute("balance",balance);
+            model.addAttribute("user",username);
         }
-        return Const.FAILURE;
+        return "deposit";
     }
 
     @RequestMapping(value = "/withdraw",method = RequestMethod.POST)
-    public String withdraw(
-            @RequestParam(value = "amount", required = true) double amount,HttpSession session) {
+    public String withdrawPost(
+            @RequestParam(value = "withdraw", required = true) String amount,
+            HttpSession session,Model model) {
         String username = (String) session.getAttribute(Const.CURRENT_USER);
-        boolean isSuccess = accountService.withdrawMoney(username,amount);
+        boolean isSuccess = accountService.withdrawMoney(username,Double.parseDouble(amount));
         if(isSuccess){
-            return Const.SUCCESS;
+            double balance = accountService.checkDeposit(username);
+            model.addAttribute("balance",balance);
+            model.addAttribute("user",username);
         }
-        return Const.FAILURE;
-    }
-
-    @RequestMapping(value = "/check",method = RequestMethod.POST)
-    public double checkDeposit(HttpSession session) {
-        String username = (String) session.getAttribute(Const.CURRENT_USER);
-        double deposit = accountService.checkDeposit(username);
-        return deposit;
+        return "deposit";
     }
 
 

@@ -24,11 +24,11 @@
           <div class="card-body">
             <h3 class="card-title ">Welcome ${user}</h3>
 
-            <form method="POST" class="my-login-validation" novalidate="" name="deposit">
+            <form action="deposit" method="POST" class="my-login-validation" novalidate="" name="deposit">
               <h6> Deposit Money</h6>
               <div class="form-group">
                 <label for="deposit"></label>
-                <input id="deposit" type="text" class="form-control" name="email" value="" required autofocus>
+                <input id="deposit" type="text" class="form-control" name="deposit" value="" required autofocus>
                 <div class="invalid-feedback">
                   Input is invalid
                 </div>
@@ -44,11 +44,11 @@
               </div>
             </form>
             <hr/>
-            <form method="POST" class="my-login-validation" novalidate="" name="withdraw">
+            <form action="withdraw" method="POST" class="my-login-validation" novalidate="" name="withdraw">
               <h6> Withdraw Money</h6>
               <div class="form-group">
                 <label for="withdraw"></label>
-                <input id="withdraw" type="text" class="form-control" name="email" value="" required autofocus>
+                <input id="withdraw" type="text" class="form-control" name="withdraw" value="" required autofocus>
                 <div class="invalid-feedback">
                   Input is invalid
                 </div>
