@@ -2,6 +2,7 @@ package edu.swe266.dao.impl;
 
 import edu.swe266.dao.AccountDao;
 import edu.swe266.pojo.Account;
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -80,6 +81,7 @@ public class AccountDaoImpl implements AccountDao {
         notNull(psw);
         if(!userExist(username)){
             jdbcTemplate.update("INSERT INTO account (psw,username,deposit) values(?,?,?)", psw,username,DEFAULT_DEPOSIT);
+            System.out.println("Create success");
             return true;
         }
         return false;
@@ -110,6 +112,7 @@ public class AccountDaoImpl implements AccountDao {
         if(accounts.size()==0){
             return false;
         }
+        System.out.println("User exist! ");
         return true;
     }
 }

@@ -8,7 +8,7 @@ public class Account {
     private String accid;
     private String username;
     private String psw;
-    private int deposit;
+    private double deposit;
 
     public void setAccid(String accid) {
         this.accid = accid;
@@ -32,7 +32,7 @@ public class Account {
         this.deposit = deposit;
     }
 
-    public int getDeposit() {
+    public double getDeposit() {
         return deposit;
     }
 
