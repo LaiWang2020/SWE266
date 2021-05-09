@@ -1,11 +1,14 @@
 DROP DATABASE IF EXISTS bank;
-create DATABASE bank;
+CREATE SCHEMA bank DEFAULT CHARACTER SET utf8 ;
 USE bank;
 
-CREATE TABLE account (
-    id int NOT NULL UNIQUE ,
-    username varchar(255) NOT NULL UNIQUE,
-    password varchar(255) NOT NULL ,
-    money int
-);
+drop table if exists account;
+CREATE TABLE account(
+      `accid` INT NOT NULL auto_increment,
+      `psw` VARCHAR(45) NULL DEFAULT NULL,
+      `username` VARCHAR(45) NULL DEFAULT NULL,
+      `deposit` VARCHAR(45) NULL DEFAULT NULL,
+      PRIMARY KEY (`accid`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8;
 
