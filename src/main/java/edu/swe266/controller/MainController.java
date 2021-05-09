@@ -34,8 +34,8 @@ public class MainController {
 
     @RequestMapping({"/"})
     public String main(Model model) {
-        model.addAttribute("password_error","username or password does not match");
-        System.out.println("validation fail");
+//        model.addAttribute("password_error","username or password does not match");
+//        System.out.println("validation fail");
         return "login"; }
 
     @RequestMapping(value = "/signUp")
@@ -76,14 +76,15 @@ public class MainController {
     public String loginPost(
             @RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password,
-            HttpSession session
+            HttpSession session,
+            Model model
             ) {
         boolean isSuccess = accountService.logIn(username,password);
         if(isSuccess){
             session.setAttribute(Const.CURRENT_USER,username);
             return "forward:deposit";
         }
-
+        model.addAttribute("password_error","username or password does not match");
         //return "redirect:/";
         return "login";
 
@@ -121,6 +122,7 @@ public class MainController {
         return "deposit";
     }
 
+    //TODO: money ckeck
     @RequestMapping(value = "/withdraw",method = RequestMethod.POST)
     public String withdrawPost(
             @RequestParam(value = "withdraw", required = true) String amount,
