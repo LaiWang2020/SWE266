@@ -38,6 +38,9 @@
                                 <div class="invalid-feedback">
                                     Password is required
                                 </div>
+                                <div class="invalid-feedback d-block">
+                                    ${user_exist}
+                                </div>
                             </div>
 
                             <div class="form-group">

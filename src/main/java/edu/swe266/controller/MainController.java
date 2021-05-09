@@ -48,7 +48,13 @@ public class MainController {
     @RequestMapping(value = "/logout")
     public String logoutGet() { return "/login"; }
 
-
+    @RequestMapping({"/login"})
+    public String loginGet(HttpSession session) {
+        if(session.getAttribute(Const.CURRENT_USER)!=null){
+            return "forward:deposit";
+        }
+        return "login";
+    }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String loginPost(
@@ -57,14 +63,15 @@ public class MainController {
             HttpSession session,
             Model model) {
         boolean isSuccess = accountService.logIn(username,password);
-        //这里如果不判断，直接加入到session里面其实是可以当成一个问题的，就是那个cwe trust boundary
         if(isSuccess){
             session.setAttribute(Const.CURRENT_USER,username);
             return "forward:deposit";
         }
         model.addAttribute("password_error","username or password does not match");
         System.out.println("validation fail");
-        return "redirect:/";
+        //return "redirect:/";
+        return "login";
+
     }
 
 
@@ -72,13 +79,15 @@ public class MainController {
     public String signUpPost(
             @RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password,
-            HttpSession session) {
+            HttpSession session,Model model) {
         boolean isSuccess = accountService.createAccount(username,password);
-        //这里如果不判断，直接加入到session里面其实是可以当成一个问题的，就是那个cwe trust boundary
+        //BAD CODE: cwe trust boundary
+        session.setAttribute(Const.CURRENT_USER,username);
         if(isSuccess){
-            session.setAttribute(Const.CURRENT_USER,username);
+            //session.setAttribute(Const.CURRENT_USER,username);
             return "redirect:deposit";
         }
+        model.addAttribute("user_exist","this username has already been registered");
         return "signUp";
     }
 
@@ -110,7 +119,5 @@ public class MainController {
         }
         return "deposit";
     }
-
-
 
 }
