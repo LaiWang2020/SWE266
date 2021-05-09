@@ -60,7 +60,12 @@ public class MainController {
     public String logoutGet() { return "/login"; }
 
     @RequestMapping({"/login"})
-    public String loginGet(HttpSession session) {
+    public String loginGet(@RequestParam(value = "target", required = false) String target,
+                           HttpSession session) {
+        //http://localhost:8080/swe266_war_exploded/login?target=http://google.com
+        if(target!=null){
+            return "redirect:"+target;
+        }
         if(session.getAttribute(Const.CURRENT_USER)!=null){
             return "forward:deposit";
         }
