@@ -57,7 +57,9 @@ public class MainController {
     }
 
     @RequestMapping(value = "/logout")
-    public String logoutGet() { return "/login"; }
+    public String logoutGet(HttpSession session) {
+        session.removeAttribute(Const.CURRENT_USER);
+        return "/login"; }
 
     @RequestMapping({"/login"})
     public String loginGet(@RequestParam(value = "target", required = false) String target,
