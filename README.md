@@ -1,20 +1,24 @@
-前端 
+This is the simple system project for build phase assignment in MSWE 266P 
 
-​	1. js，css， html 
+Author: Chupeng Zhang, Yu Sun, Lai Wang, Xinyi Hu
 
-​	2. 网上可能有现成的 可以去别人项目里面找找
+**Project Architecture:**
 
-3. 如果有些功能需要添加的话还是得有能力进行一些修改
+Front End:
 
-后端
+1. JSP
+2. Bootstrap
+3. CSS
 
- 	1.  需要简单学习一下spring
- 	2.  要有几个功能需要满足 登录 注册 转账
- 	3.  要和数据库集成
- 	4.  留下可以攻击的漏洞
+Back End:
 
-数据库
+1. Spring MVC
+2. Tomcat 9
 
-	1. 想好要建那几张表
- 	2. 思考需要那些字段
+Data Base:
+1. Mysql Database
+
+**Build/Test Instruction:**
+
+
 
