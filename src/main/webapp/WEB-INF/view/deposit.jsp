@@ -29,8 +29,8 @@
               <div class="form-group">
                 <label for="save"></label>
                 <input id="save" type="text" class="form-control" name="save" value="" required autofocus>
-                <div class="invalid-feedback">
-                  Input is invalid
+                <div class="invalid-feedback d-block">
+                  ${deposit_error}
                 </div>
                 <div class="form-text text-muted">
                   put the amount of money you want to deposit $
@@ -49,8 +49,8 @@
               <div class="form-group">
                 <label for="withdraw"></label>
                 <input id="withdraw" type="text" class="form-control" name="withdraw" value="" required autofocus>
-                <div class="invalid-feedback">
-                  Input is invalid
+                <div class="invalid-feedback d-block">
+                  ${withdraw_error}
                 </div>
                 <div class="form-text text-muted">
                   put the amount of money you want to deposit $

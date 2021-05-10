@@ -87,7 +87,6 @@ public class MainController {
             return "forward:deposit";
         }
         model.addAttribute("password_error","username or password does not match");
-        //return "redirect:/";
         return "login";
 
     }
@@ -115,13 +114,20 @@ public class MainController {
             @RequestParam(value = "save", required = true) String amount,
             HttpSession session,Model model) {
         String username = (String) session.getAttribute(Const.CURRENT_USER);
-        boolean isSuccess = accountService.depositMoney(username,Double.parseDouble(amount));
-        if(isSuccess){
-            double balance = accountService.checkDeposit(username);
-            model.addAttribute("balance",balance);
-            model.addAttribute("user",username);
+        try {
+            boolean isSuccess = accountService.depositMoney(username, Double.parseDouble(amount));
+            if (isSuccess) {
+                double balance = accountService.checkDeposit(username);
+                model.addAttribute("balance", balance);
+                model.addAttribute("user", username);
+                return "deposit";
+            }
+        }catch (NumberFormatException nfe){
+            System.out.println("Invalid deposit Input ");
         }
-        return "deposit";
+        model.addAttribute("deposit_error","deposit error invalid input");
+
+        return "forward:deposit";
     }
 
     //TODO: money ckeck
@@ -130,13 +136,19 @@ public class MainController {
             @RequestParam(value = "withdraw", required = true) String amount,
             HttpSession session,Model model) {
         String username = (String) session.getAttribute(Const.CURRENT_USER);
-        boolean isSuccess = accountService.withdrawMoney(username,Double.parseDouble(amount));
-        if(isSuccess){
-            double balance = accountService.checkDeposit(username);
-            model.addAttribute("balance",balance);
-            model.addAttribute("user",username);
+        try{
+            boolean isSuccess = accountService.withdrawMoney(username,Double.parseDouble(amount));
+            if(isSuccess){
+                double balance = accountService.checkDeposit(username);
+                model.addAttribute("balance",balance);
+                model.addAttribute("user",username);
+                return "deposit";
+            }
+        }catch (NumberFormatException nfe){
+            System.out.println("Invalid withdraw Input ");
         }
-        return "deposit";
+        model.addAttribute("withdraw_error","Withdraw error, invalid input");
+        return "forward:deposit";
     }
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
