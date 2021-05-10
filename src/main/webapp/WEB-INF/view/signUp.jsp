@@ -26,7 +26,8 @@
 
                             <div class="form-group">
                                 <label for="username">username</label>
-                                <input id="username" type="text" class="form-control" name="username" required>
+                                <input id="username" type="text" class="form-control" name="username" required="required"/>
+                                <input id="submit_handle" type="submit" style="display: none">
                                 <div class="invalid-feedback">
                                     username is required
                                 </div>
@@ -34,7 +35,7 @@
 
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input id="password" type="password" class="form-control" name="password" required data-eye>
+                                <input id="password" type="password" class="form-control" name="password" required="required" data-eye/>
                                 <div class="invalid-feedback">
                                     Password is required
                                 </div>

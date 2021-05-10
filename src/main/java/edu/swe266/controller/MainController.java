@@ -79,8 +79,11 @@ public class MainController {
             @RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password,
             HttpSession session,
-            Model model
-            ) {
+            Model model) {
+        if (username == "" || password == "") {
+            model.addAttribute("password_error","username or password cannot be empty");
+            return "login";
+        }
         boolean isSuccess = accountService.logIn(username,password);
         if(isSuccess){
             session.setAttribute(Const.CURRENT_USER,username);
@@ -97,6 +100,11 @@ public class MainController {
             @RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password,
             HttpSession session,Model model) {
+        // check empty input
+        if (username == "" || password == "") {
+            model.addAttribute("user_exist","username or password cannot be empty");
+            return "signUp";
+        }
         boolean isSuccess = accountService.createAccount(username,password);
         //BAD CODE: cwe trust boundary
         session.setAttribute(Const.CURRENT_USER,username);
