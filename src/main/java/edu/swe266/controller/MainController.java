@@ -59,7 +59,8 @@ public class MainController {
     @RequestMapping(value = "/logout")
     public String logoutGet(HttpSession session) {
         session.removeAttribute(Const.CURRENT_USER);
-        return "/login"; }
+        return "/login";
+    }
 
     @RequestMapping({"/login"})
     public String loginGet(@RequestParam(value = "target", required = false) String target,
@@ -105,6 +106,11 @@ public class MainController {
             model.addAttribute("user_exist","username or password cannot be empty");
             return "signUp";
         }
+        String reg = "^[_\\-\\.0-9a-z]{0,127}$";
+        if(!username.matches(reg)||!password.matches(reg)){
+            model.addAttribute("user_exist","username or password not in format");
+            return "signUp";
+        }
         boolean isSuccess = accountService.createAccount(username,password);
         //BAD CODE: cwe trust boundary
         session.setAttribute(Const.CURRENT_USER,username);
@@ -123,6 +129,9 @@ public class MainController {
             HttpSession session,Model model) {
         String username = (String) session.getAttribute(Const.CURRENT_USER);
         try {
+            if(amount.charAt(0)=='0'){
+                throw new NumberFormatException();
+            }
             boolean isSuccess = accountService.depositMoney(username, Double.parseDouble(amount));
             if (isSuccess) {
                 double balance = accountService.checkDeposit(username);
@@ -145,6 +154,9 @@ public class MainController {
             HttpSession session,Model model) {
         String username = (String) session.getAttribute(Const.CURRENT_USER);
         try{
+            if(amount.charAt(0)=='0'){
+                throw new NumberFormatException();
+            }
             boolean isSuccess = accountService.withdrawMoney(username,Double.parseDouble(amount));
             if(isSuccess){
                 double balance = accountService.checkDeposit(username);
