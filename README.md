@@ -4,7 +4,7 @@ This is the simple system project for build phase assignment in MSWE 266P
 
 Author: Chupeng Zhang, Yu Sun, Lai Wang, Xinyi Hu
 
-# **Project Architecture:**
+# Project Architecture
 
 Front End:
 
@@ -21,7 +21,7 @@ Data Base:
 
 1. Mysql Database
 
-# **Build/Test Instruction:**
+# Build/Test Instruction
 
 
 We developed a web app, using Tomcat version 9. To load Tomcat version 9, you need to firstly go to the [official website](http://tomcat.apache.org/) to download Tomcat. 
@@ -75,3 +75,11 @@ Make sure you use the configuration:
 ![image.png](https://i.loli.net/2021/05/12/37FwbYKBP82e9qE.png)
 
 After running the Tomcat Server, you could visit our website with url: localhost:8080/swe266/ 
+
+# Build result
+
+If you build our project successfully, it will appear like this. 
+
+![image.png](https://i.loli.net/2021/05/12/bAh5cx67MzmH8Zq.png)
+
+Yeah! You've done this!
