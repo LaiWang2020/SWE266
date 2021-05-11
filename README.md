@@ -1,3 +1,5 @@
+# Introduction
+
 This is the simple system project for build phase assignment in MSWE 266P 
 
 Author: Chupeng Zhang, Yu Sun, Lai Wang, Xinyi Hu
@@ -16,6 +18,7 @@ Back End:
 2. Tomcat 9
 
 Data Base:
+
 1. Mysql Database
 
 # **Build/Test Instruction:**
@@ -47,7 +50,9 @@ Press deployment button and add artifact here.
 
 ## Database 
 
-To make the sql and database work, firstly you need to log in your local database at first and execute the sql file in the directory: src\main\java\edu\swe266\sql. 
+To make the sql and database work, firstly you need to log in your local database, like MySQL Workbench, at first and execute the sql file in the directory: src\main\java\edu\swe266\sql. 
+
+![image.png](https://i.loli.net/2021/05/12/DvR7sNMcHCBQium.png)
 
 ![image.png](https://i.loli.net/2021/05/11/SFDswimVzv7u4nQ.png)
 
@@ -56,3 +61,17 @@ Then you need to change the root password in jdbc.properties. Directory: src\mai
 ![image.png](https://i.loli.net/2021/05/11/TIltrkSEUaoD8jf.png)
 
 Then your database is done!
+
+Note: If you are using IDEA community version and can not find tomcat in Run/Debug Configuration, you could try to download the smart tomcat plugin.
+
+![image.png](https://i.loli.net/2021/05/12/9NUokCdALaPKiXQ.png)
+
+Enable Smart Tomcat and you could find the Smart Tomcat in Run/Debug Configuration.
+
+![image.png](https://i.loli.net/2021/05/12/2T9NPEO7j8vqr3G.png)
+
+Make sure you use the configuration: 
+
+![image.png](https://i.loli.net/2021/05/12/37FwbYKBP82e9qE.png)
+
+After running the Tomcat Server, you could visit our website with url: localhost:8080/swe266/ 
