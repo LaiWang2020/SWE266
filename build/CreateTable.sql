@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS bank;
-CREATE SCHEMA bank DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA bank DEFAULT CHARACTER SET utf8;
 USE bank;
 
 drop table if exists account;
