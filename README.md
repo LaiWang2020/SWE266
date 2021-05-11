@@ -21,7 +21,6 @@ Data Base:
 # **Build/Test Instruction:**
 
 
-
 We developed a web app, using Tomcat version 9. To load Tomcat version 9, you need to firstly go to the [official website](http://tomcat.apache.org/) to download Tomcat. 
 
 Here we are using version 9.0.45. You can feel free to download 32-bit or 64-bit.

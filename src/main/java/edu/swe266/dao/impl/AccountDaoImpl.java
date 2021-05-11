@@ -91,6 +91,8 @@ public class AccountDaoImpl implements AccountDao {
     public boolean logIn(String username, String psw) {
         notNull(username);
         notNull(psw);
+        //good code
+        //List<Account> accounts=jdbcTemplate.query("select * from account where username=? and psw=?",new BeanPropertyRowMapper<Account>(Account.class), username,psw);
         //bad code SQL injection
         List<Account> accounts = jdbcTemplate.query("Select * from account where username='" + username + "' and psw='" + psw + "'", new BeanPropertyRowMapper<Account>(Account.class));
         if(accounts.size()==0){
