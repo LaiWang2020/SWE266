@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.nio.file.Paths;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -174,13 +175,21 @@ public class MainController {
     @RequestMapping(value = "/download", method = RequestMethod.GET)
     public String downloadFile(
 
-            @RequestParam(value = "terms", required = true) String imageName,
+            @RequestParam(value = "terms", required = true) String fileName,
             HttpServletRequest request,
             HttpServletResponse response) {
 
 
         System.out.println("download File");
-        String path = context.getRealPath("/resources/terms") + File.separator + imageName;
+        // Bad Code
+        String path = context.getRealPath("/resources/terms") + File.separator + fileName;
+        // Add logic to check if the final path is still in the /resources/terms folder
+        // Consider the case /resources/terms/../WEB-INF/web.xml
+        boolean valid = Paths.get(path).normalize().equals(Paths.get(path));
+        if (!valid){
+            System.out.println("invalid download");
+            return "signUp";
+        }
 
 
         InputStream inputStream = null;
@@ -199,7 +208,7 @@ public class MainController {
             // Set content attributes for the response
             response.setContentType(mimeType);
             response.setContentLength((int) downloadFile.length());
-            response.setHeader("Content-Disposition", "attachment; filename=" + imageName);
+            response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
 
             // get output stream of the response
             outStream = response.getOutputStream();

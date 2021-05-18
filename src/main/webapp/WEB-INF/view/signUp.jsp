@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="footer">
-                    Copyright &copy; 2017 &mdash; Sun Coorperation
+                    Copyright &copy; 2017 &mdash; Rocky Inc.
                 </div>
             </div>
         </div>
