@@ -16,6 +16,8 @@ public class Test {
     ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
     AccountService account = applicationContext.getBean(AccountService.class);
     @org.junit.Test
+
+
     public void testDeposit(){
 
         System.out.println(account.checkDeposit("duke"));
