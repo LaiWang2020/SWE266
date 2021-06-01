@@ -67,8 +67,13 @@ public class MainController {
     public String loginGet(@RequestParam(value = "target", required = false) String target,
                            HttpSession session) {
         //http://localhost:8080/swe266_war_exploded/login?target=http://google.com
+        //http://localhost:8080/swe266_war_exploded/login?target=http://127.0.0.1:8080/swe266_war_exploded/signUp
         if(target!=null){
-            return "redirect:"+target;
+            if(target.startsWith("http://127.0.0.1:8080/")){
+                return "redirect:"+target;
+            }else{
+                return "redirect:login";
+            }
         }
         if(session.getAttribute(Const.CURRENT_USER)!=null){
             return "forward:deposit";
@@ -114,7 +119,8 @@ public class MainController {
         }
         boolean isSuccess = accountService.createAccount(username,password);
         //BAD CODE: cwe trust boundary
-        session.setAttribute(Const.CURRENT_USER,username);
+        //session.setAttribute(Const.CURRENT_USER,username);
+        session.setAttribute(Const.REGISTER_USER,username);
         if(isSuccess){
             //session.setAttribute(Const.CURRENT_USER,username);
             return "redirect:deposit";
