@@ -191,11 +191,12 @@ public class MainController {
         String path = context.getRealPath("/resources/terms") + File.separator + fileName;
         // Add logic to check if the final path is still in the /resources/terms folder
         // Consider the case /resources/terms/../WEB-INF/web.xml
-        boolean valid = Paths.get(path).normalize().equals(Paths.get(path));
-        if (!valid){
-            System.out.println("invalid download");
-            return "signUp";
-        }
+
+//        boolean valid = Paths.get(path).normalize().equals(Paths.get(path));
+//        if (!valid){
+//            System.out.println("invalid download");
+//            return "signUp";
+//        }
 
 
         InputStream inputStream = null;
