@@ -74,11 +74,11 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public boolean createAccount(String username,String psw) {
+    public boolean createAccount(String username,String psw, double initmoney) {
         notNull(username);
         notNull(psw);
         if(!userExist(username)){
-            jdbcTemplate.update("INSERT INTO account (psw,username,deposit) values(?,?,?)", psw,username,DEFAULT_DEPOSIT);
+            jdbcTemplate.update("INSERT INTO account (psw,username,deposit) values(?,?,?)", psw,username, initmoney);
 
             return true;
         }

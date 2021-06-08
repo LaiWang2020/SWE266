@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -24,14 +25,17 @@ import java.util.logging.Logger;
 
 
 @Controller
-public class MainController {
+public class MainController implements ServletContextAware {
 
     //private static final Logger logger = LogManager.getLogger(MainController.class);
     @Autowired
     AccountService accountService;
 
-    @Autowired
-    ServletContext context;
+    private ServletContext context;
+
+    public void setServletContext(ServletContext servletContext) {
+        this.context = servletContext;
+    }
 
     @RequestMapping({"/"})
     public String main(Model model) {
@@ -106,6 +110,7 @@ public class MainController {
     public String signUpPost(
             @RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password,
+            @RequestParam(value = "initMoney", required = true) String initMoney,
             HttpSession session,Model model) {
         // check empty input
         if (username == "" || password == "") {
@@ -117,12 +122,12 @@ public class MainController {
             model.addAttribute("user_exist","username or password not in format");
             return "signUp";
         }
-        boolean isSuccess = accountService.createAccount(username,password);
+        boolean isSuccess = accountService.createAccount(username,password,Double.parseDouble(initMoney));
         //BAD CODE: cwe trust boundary
-        //session.setAttribute(Const.CURRENT_USER,username);
+//        session.setAttribute(Const.CURRENT_USER,username);
         session.setAttribute(Const.REGISTER_USER,username);
         if(isSuccess){
-            //session.setAttribute(Const.CURRENT_USER,username);
+            session.setAttribute(Const.CURRENT_USER,username);
             return "redirect:deposit";
         }
         model.addAttribute("user_exist","this username has already been registered");

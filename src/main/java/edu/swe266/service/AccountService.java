@@ -6,7 +6,7 @@ public interface AccountService {
     public boolean withdrawMoney(String username, double money);
     public boolean depositMoney(String username, double money);
     public double checkDeposit(String username);
-    public boolean createAccount(String username,String psw);
+    public boolean createAccount(String username,String psw, double initMoney);
     public boolean logIn(String username, String psw);
     public boolean userExist(String username);
 }

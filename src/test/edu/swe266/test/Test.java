@@ -32,7 +32,7 @@ public class Test {
     }
     @org.junit.Test
     public void testCreateAccount(){
-        System.out.println(account.createAccount("duke5","123456"));
+        System.out.println(account.createAccount("duke5","123456", 1000));
 
     }
     @org.junit.Test

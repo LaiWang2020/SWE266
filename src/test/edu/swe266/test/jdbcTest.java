@@ -11,12 +11,12 @@ public class jdbcTest {
     public void test1() throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass("com.mysql.jdbc.Driver");
-        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/testm5");
+        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/bank");
         dataSource.setUser("root");
-        dataSource.setPassword("wanglai2020");
+        dataSource.setPassword("123456");
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource);
-        int row = jdbcTemplate.update("insert into courses value (?,?,?,?)",7,"a",1,"10am");
+        int row = jdbcTemplate.update("insert into account value (?,?,?,?)",7,"a",1,"10am");
         System.out.println(row);
 
     }

@@ -25,7 +25,7 @@
                         <form action="signUp" method="POST" class="my-login-validation" novalidate="">
 
                             <div class="form-group">
-                                <label for="username">username</label>
+                                <label for="username">Username</label>
                                 <input id="username" type="text" class="form-control" name="username" required="required"/>
                                 <input id="submit_handle" type="submit" style="display: none">
                                 <div class="invalid-feedback">
@@ -42,6 +42,10 @@
                                 <div class="invalid-feedback d-block">
                                     ${user_exist}
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="initMoney">InitMoney</label>
+                                <input id="initMoney" type="text" class="form-control" name="initMoney" required="required" data-eye/>
                             </div>
 
                             <div class="form-group">

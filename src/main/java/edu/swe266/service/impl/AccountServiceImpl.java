@@ -30,8 +30,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public boolean createAccount(String username,String psw) {
-        return accountDao.createAccount(username,psw);
+    public boolean createAccount(String username,String psw, double initMoney) {
+        return accountDao.createAccount(username,psw, initMoney);
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
